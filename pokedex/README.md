@@ -1,50 +1,154 @@
-# Welcome to your Expo app 👋
+# Pokédex App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, cross-platform mobile application built with React Native and Expo that allows you to browse and explore Pokémon from the [PokéAPI](https://pokeapi.co/). Discover detailed information about your favorite Pokémon including stats, abilities, moves, and more.
 
-## Get started
+## Features
 
-1. Install dependencies
+- 🎨 **Beautiful UI**: Modern, dark-themed interface with type-based color coding
+- 📱 **Cross-Platform**: Works on iOS, Android, and Web
+- 🔍 **Pokémon Browser**: Browse through the first 100 Pokémon in a beautiful grid layout
+- 📄 **Pagination**: Navigate through Pokémon with Previous/Next buttons
+- 📊 **Detailed View**: View comprehensive information about each Pokémon including:
+  - Physical stats (height, weight)
+  - Base stats with visual progress bars
+  - Abilities (including hidden abilities)
+  - Top 20 moves
+  - Type information with color-coded badges
+- ⚡ **Loading States**: Skeleton loading animations for better UX
+- 🎯 **Type-Based Styling**: Each Pokémon card is color-coded based on its primary type
+
+## Tech Stack
+
+- **Framework**: [Expo](https://expo.dev) ~54.0.25
+- **Navigation**: [Expo Router](https://docs.expo.dev/router/introduction/) ~6.0.15 (file-based routing)
+- **Language**: TypeScript
+- **UI Library**: React Native 0.81.5
+- **API**: [PokéAPI](https://pokeapi.co/)
+- **Architecture**: React Native New Architecture enabled
+
+## Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm or yarn
+- Expo CLI (installed globally or via npx)
+- For iOS development: Xcode (macOS only)
+- For Android development: Android Studio
+
+## Installation
+
+1. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. **Start the development server**
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+   Or use the npm scripts:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   npm start        # Start Expo dev server
+   npm run android  # Start on Android
+   npm run ios      # Start on iOS simulator
+   npm run web      # Start on web browser
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Development
 
-## Get a fresh project
+### Running the App
 
-When you're ready, run:
+After starting the Expo development server, you can:
 
-```bash
-npm run reset-project
+- Press `a` to open on Android emulator
+- Press `i` to open on iOS simulator
+- Press `w` to open in web browser
+- Scan the QR code with Expo Go app on your physical device
+
+### Project Structure
+
+```
+pokedex/
+├── app/
+│   ├── _layout.tsx    # Root layout with navigation setup
+│   ├── index.tsx      # Main Pokémon list screen
+│   └── details.tsx    # Pokémon detail screen
+├── assets/
+│   └── images/        # App icons and images
+├── app.json           # Expo configuration
+├── package.json       # Dependencies and scripts
+└── tsconfig.json      # TypeScript configuration
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Key Files
 
-## Learn more
+- **`app/index.tsx`**: Main screen displaying the Pokémon grid with pagination
+- **`app/details.tsx`**: Detail screen showing comprehensive Pokémon information
+- **`app/_layout.tsx`**: Root layout component
 
-To learn more about developing your project with Expo, look at the following resources:
+## API Information
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+This app uses the [PokéAPI](https://pokeapi.co/) to fetch Pokémon data. The app currently displays the first 100 Pokémon and includes:
 
-## Join the community
+- Basic Pokémon information (name, ID, images)
+- Type information
+- Physical stats (height, weight)
+- Base stats (HP, Attack, Defense, etc.)
+- Abilities
+- Moves (top 20 displayed)
 
-Join our community of developers creating universal apps.
+## Available Scripts
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- `npm start` - Start the Expo development server
+- `npm run android` - Start the app on Android emulator
+- `npm run ios` - Start the app on iOS simulator
+- `npm run web` - Start the app in web browser
+- `npm run lint` - Run ESLint to check code quality
+
+## Pokémon Type Colors
+
+The app uses color-coded badges and cards based on Pokémon types:
+
+- 🟢 Grass: `#78C850`
+- 🔴 Fire: `#F08030`
+- 🔵 Water: `#6890F0`
+- 🟡 Electric: `#F8D030`
+- 🟣 Poison: `#A040A0`
+- 🟤 Ground: `#E0C068`
+- 🐛 Bug: `#A8B820`
+- ⚪ Normal: `#A8A878`
+- 💖 Fairy: `#EE99AC`
+- And more...
+
+## Features in Detail
+
+### Main Screen (`index.tsx`)
+
+- Grid layout with 2 columns
+- Skeleton loading animations
+- Pagination controls (Previous/Next)
+- Tap any Pokémon card to view details
+- Type-based card coloring
+
+### Detail Screen (`details.tsx`)
+
+- Large Pokémon image
+- Type badges with color coding
+- Physical stats display
+- Base stats with visual progress bars
+- Abilities list (including hidden abilities)
+- Moves grid (top 20 moves)
+
+## Learn More
+
+- [Expo Documentation](https://docs.expo.dev/)
+- [Expo Router Documentation](https://docs.expo.dev/router/introduction/)
+- [React Native Documentation](https://reactnative.dev/)
+- [PokéAPI Documentation](https://pokeapi.co/docs/v2)
+
+## License
+
+This project is private and for personal use.

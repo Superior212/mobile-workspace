@@ -12,6 +12,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import PaginationButtons from "../components/PaginationButtons";
 
 interface Pokemon {
   name: string;
@@ -183,7 +184,7 @@ export default function Index() {
       style={({ pressed }) => [
         styles.card,
         {
-          backgroundColor: poke.colorByType + 20, // Semi-transparent type color
+          backgroundColor: poke.colorByType + 20, 
           borderColor: poke.colorByType + 50,
           transform: pressed ? [{ scale: 0.98 }] : [{ scale: 1 }],
         },
@@ -222,39 +223,13 @@ export default function Index() {
         ItemSeparatorComponent={() => <View style={{ height: 20 }} />} // Vertical spacing between rows
         ListFooterComponent={() => <View style={{ height: 20 }} />}
       />
-      {/* Pagination Buttons */}
-      <View style={styles.paginationContainer}>
-        <Pressable
-          onPress={handlePreviousPage}
-          disabled={!previousUrl || loading}
-          style={[
-            styles.paginationButton,
-            (!previousUrl || loading) && styles.paginationButtonDisabled,
-          ]}>
-          <Text
-            style={[
-              styles.paginationButtonText,
-              (!previousUrl || loading) && styles.paginationButtonTextDisabled,
-            ]}>
-            Previous
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={handleNextPage}
-          disabled={!nextUrl || loading}
-          style={[
-            styles.paginationButton,
-            (!nextUrl || loading) && styles.paginationButtonDisabled,
-          ]}>
-          <Text
-            style={[
-              styles.paginationButtonText,
-              (!nextUrl || loading) && styles.paginationButtonTextDisabled,
-            ]}>
-            Next
-          </Text>
-        </Pressable>
-      </View>
+      <PaginationButtons
+        onPrevious={handlePreviousPage}
+        onNext={handleNextPage}
+        hasPrevious={!!previousUrl}
+        hasNext={!!nextUrl}
+        loading={loading}
+      />
     </SafeAreaView>
   );
 }
@@ -399,35 +374,5 @@ const styles = StyleSheet.create({
     width: 100,
     backgroundColor: "#3a3a4e",
     borderRadius: 4,
-  },
-  paginationContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    backgroundColor: "#16213e",
-    borderTopWidth: 1,
-    borderTopColor: "#1a1a2e",
-  },
-  paginationButton: {
-    flex: 1,
-    backgroundColor: "#c5931dff",
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    alignItems: "center",
-    marginHorizontal: 8,
-  },
-  paginationButtonDisabled: {
-    backgroundColor: "#3a3a4e",
-    opacity: 0.5,
-  },
-  paginationButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  paginationButtonTextDisabled: {
-    color: "#a0a0a0",
   },
 });
